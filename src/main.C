@@ -25,18 +25,18 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.10 2004-02-24 00:13:18 einstein Exp $";
+static char *id = "$Id: main.C,v 1.11 2004-02-24 00:25:43 einstein Exp $";
 
 // ************************************************** //
 
 unsigned int wielkosc_okna_x = 900;
 unsigned int wielkosc_okna_y = 700;
 
-const unsigned int wielkosc_ekosystemu_x = 2000;
-const unsigned int wielkosc_ekosystemu_y = 1000;
+const unsigned int wielkosc_ekosystemu_x = 1800;
+const unsigned int wielkosc_ekosystemu_y = 1400;
 
-const unsigned int pojemnosc_srodowiska = 190;
-const unsigned int wampirzcow_na_poczatku = 8;
+const unsigned int pojemnosc_srodowiska = 120;
+const unsigned int wampirzcow_na_poczatku = 12;
 
 const unsigned int jurnosc_minimalna = 2;
 const unsigned int jurnosc_maksymalna = 20;

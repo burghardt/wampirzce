@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.C,v 1.4 2004-02-24 00:13:18 einstein Exp $
+// $Id: kolonia.C,v 1.5 2004-02-24 00:25:43 einstein Exp $
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -79,7 +79,7 @@ Kolonia::ChwilaZycia (void)
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
   glOrtho (0.0, wielkosc_okna_x, 0,
-	   wielkosc_okna_y - ((wielkosc_okna_y / 50) + 5),
+	   wielkosc_okna_y - ((wielkosc_okna_y / 50.0) + 5),
 	   -1.0, 1.0);
   glColor4f (0.7f, 0.6f, 0.5f, 0.4f);
   glEnable (GL_BLEND);
@@ -87,8 +87,8 @@ Kolonia::ChwilaZycia (void)
   glBegin (GL_QUADS);
   glVertex2f (0.f, 0.f);
   glVertex2f (wielkosc_okna_x, 0.f);
-  glVertex2f (wielkosc_okna_x, 40.f);
-  glVertex2f (0.f, 40.f);
+  glVertex2f (wielkosc_okna_x, 20.f);
+  glVertex2f (0.f, 20.f);
   glEnd ();
 
   glColor3f (1.f, 1.f, 1.f);
@@ -96,14 +96,14 @@ Kolonia::ChwilaZycia (void)
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
 
   char buffer[32];
-  glScalef (0.2f, 0.2f, 1.0f);
+  glScalef (0.1f, 0.1f, 1.0f);
 
   glTranslatef (100.f, 50.f, 0.f);
   glDrawText ("Wampirzcow: ");
   sprintf (buffer, "%d", stado.size ());
   glDrawText (buffer);
 
-  glTranslatef (wielkosc_okna_x / 2 + 100, 0.f, 0.f);
+  glTranslatef (wielkosc_okna_x / 2 + 10, 0.f, 0.f);
   glDrawText ("Iteracji: ");
   sprintf (buffer, "%d", iteracji);
   glDrawText (buffer);
