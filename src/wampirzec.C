@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.C,v 1.6 2004-06-30 13:02:06 einstein Exp $
+// $Id: wampirzec.C,v 1.7 2004-06-30 13:02:56 einstein Exp $
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -74,7 +74,8 @@ Wampirzec::ChwilaZycia (const deque < Wampirzec * >wszystkie_wampirzce)
   return nowy;
 }
 
-bool Wampirzec::CzyMartwy (void)
+bool
+Wampirzec::CzyMartwy (void)
 {
   if (zycie <= 0)
     {

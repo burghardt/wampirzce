@@ -25,7 +25,7 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.13 2004-06-30 13:02:06 einstein Exp $";
+static char *id = "$Id: main.C,v 1.14 2004-06-30 13:02:56 einstein Exp $";
 
 unsigned int wielkosc_okna_x = 1024;
 unsigned int wielkosc_okna_y = 768;
@@ -75,8 +75,10 @@ main (int argc, char **argv)
 				SDL_OPENGL | SDL_DOUBLEBUF | SDL_FULLSCREEN);
   SDL_WM_SetCaption (PACKAGE_STRING, PACKAGE_STRING);
 
-  SDL_Event event;
-  bool go_quit = false;
+  SDL_Event
+    event;
+  bool
+    go_quit = false;
   unsigned int
     startTime = 0;
   unsigned int
@@ -129,7 +131,8 @@ main (int argc, char **argv)
 	SDL_Delay (5 - (startTime - endTime));
     }
 
-  delete KoloniaWampirzcow;
+  delete
+    KoloniaWampirzcow;
   SDL_Quit ();
   return 0;
 }
