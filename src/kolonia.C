@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.C,v 1.5 2004-02-24 00:25:43 einstein Exp $
+// $Id: kolonia.C,v 1.6 2004-02-27 16:36:45 einstein Exp $
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -107,6 +107,9 @@ Kolonia::ChwilaZycia (void)
   glDrawText ("Iteracji: ");
   sprintf (buffer, "%d", iteracji);
   glDrawText (buffer);
+
+  glTranslatef (wielkosc_okna_x * 3.0/4.0 + 10, 0.f, 0.f);
+  glDrawText ("Press ESC to exit");
 
   glDisable (GL_LINE_SMOOTH);
 
