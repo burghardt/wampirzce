@@ -25,15 +25,15 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.4 2004-02-05 00:18:59 einstein Exp $";
+static char *id = "$Id: main.C,v 1.5 2004-02-05 06:58:56 einstein Exp $";
 
 // ************************************************** //
 
 const unsigned int wielkosc_ekosystemu_x = 800;
 const unsigned int wielkosc_ekosystemu_y = 600;
 
-const unsigned int pojemnosc_srodowiska = 80;
-const unsigned int wampirzcow_na_poczatku = 8;
+const unsigned int pojemnosc_srodowiska = 90;
+const unsigned int wampirzcow_na_poczatku = 5;
 
 const unsigned int jurnosc_minimalna = 2;
 const unsigned int jurnosc_maksymalna = 20;
@@ -47,7 +47,7 @@ const double odpoczynek_a_jurnosc = 0.05;
 const unsigned int prawdopodobienstwo_mutacji = 20; // w %
 const double prawdopodobienstwo_mutacji_a_jurnosc = 0.5;
 
-const double szybkosc_a_jurnosc = 0.3;
+const double szybkosc_a_jurnosc = 0.7;
 
 // ************************************************** //
 
