@@ -1,0 +1,5 @@
+2004-02-04  Krzysztof Burghardt
+
+	* wampirzec.C: Math model improvements.
+	* main.C: Many configuration option has been added.
+	* configure.ac: Bumped to 0.0.1 (unreleased, internal version).
