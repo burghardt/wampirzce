@@ -10,15 +10,11 @@ AC_PROG_CXX
 
 # Checks for header files.
 AC_CHECK_HEADER(sys/time.h,,AC_MSG_ERROR(No sys/time.h found!))
-AC_CHECK_HEADER(GL/freeglut.h,,AC_MSG_ERROR(No GL/freeglut.h found!))
+AC_CHECK_HEADER(GL/glut.h,,AC_MSG_ERROR(No GL/glut.h found!))
 
 # Checks for library functions.
 #AC_CHECK_LIB(Xxf86vm,XF86VidModeSetViewPort,,AC_MSG_ERROR(Xxf86vm))
 #AC_CHECK_LIB(freeglut-1.3,glutInit,,AC_MSG_ERROR(freeglut-1.3))
-
-#-DGL_FULL_SCREEN
-CXXFLAGS="-Wall -ffast-math -funroll-loops -O3 -mcpu=athlon -march=athlon"
-LDFLAGS="-L/usr/X11R6/lib -lfreeglut-1.3 -lXxf86vm"
 
 AC_CONFIG_FILES([Makefile
  src/Makefile
