@@ -18,14 +18,14 @@
 */
 
 #include <iostream>
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 
 #include "config.h"
 #include "kolonia.h"
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.6 2004-02-05 12:52:41 einstein Exp $";
+static char *id = "$Id: main.C,v 1.7 2004-02-06 19:46:31 einstein Exp $";
 
 // ************************************************** //
 
@@ -44,7 +44,7 @@ const unsigned int zycie_a_jurnosc = 5;
 const unsigned int odpoczynek_minimalny = 32;
 const double odpoczynek_a_jurnosc = 0.05;
 
-const unsigned int prawdopodobienstwo_mutacji = 20; // w %
+const unsigned int prawdopodobienstwo_mutacji = 20;	// w %
 const double prawdopodobienstwo_mutacji_a_jurnosc = 0.5;
 
 const double szybkosc_a_jurnosc = 0.7;
@@ -56,21 +56,25 @@ unsigned int
 
 // ************************************************** //
 
-Kolonia Wampirzcow;
+Kolonia
+  Wampirzcow;
 
 // ************************************************** //
 
 void
 BrykajaceWampirzce (void)
 {
-  glClear (GL_COLOR_BUFFER_BIT);
-  glClearColor (0.0, 0.0, 0.0, 0.0);
+  for (;;)
+    {
+      glClear (GL_COLOR_BUFFER_BIT);
+      glClearColor (0.0, 0.0, 0.0, 0.0);
 
-  Wampirzcow.ChwilaZycia ();
-  usleep (100000);
+      Wampirzcow.ChwilaZycia ();
+//      usleep (25000);
 
-  glFlush ();
-  glutSwapBuffers ();
+      glFlush ();
+      glutSwapBuffers ();
+    }
 }
 
 int
@@ -98,5 +102,6 @@ main (int argc, char **argv)
   glutDisplayFunc (&BrykajaceWampirzce);
   clog << "Rozpoczynam symulacje..." << endl << endl;
   glutMainLoop ();
+
   return 0;
 }

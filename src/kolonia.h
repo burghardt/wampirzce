@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.h,v 1.2 2004-02-05 00:14:38 einstein Exp $
+// $Id: kolonia.h,v 1.3 2004-02-06 19:46:31 einstein Exp $
 
 #ifndef __KOLONIA_H__
 #define __KOLONIA_H__
@@ -37,7 +37,7 @@ public:
   Kolonia (void);
   void ChwilaZycia (void);
 private:
-  list <Wampirzec*> stado;
+    list < Wampirzec * >stado;
   unsigned long long int iteracji;
 };
 

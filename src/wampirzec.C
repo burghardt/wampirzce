@@ -19,10 +19,10 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.C,v 1.3 2004-02-05 12:46:54 einstein Exp $
+// $Id: wampirzec.C,v 1.4 2004-02-06 19:46:31 einstein Exp $
 
 #include <iostream>
-#include <GL/freeglut.h>
+#include <GL/glut.h>
 #include "wampirzec.h"
 
 using namespace std;
@@ -35,12 +35,13 @@ glPutPixel (double x, double y, double z, double r, double g, double b)
 }
 
 Wampirzec::Wampirzec (const double _x, const double _y, const double _jurnosc,
-		      const unsigned int _zycie, const unsigned int _odpoczynek):
+		      const unsigned int _zycie,
+		      const unsigned int _odpoczynek):
 Polozenie (_x, _y)
 {
   jurnosc = _jurnosc;
   zycie = _zycie + (int) (zycie_a_jurnosc * jurnosc);
-  odpoczynek = _odpoczynek - (int)(odpoczynek_a_jurnosc * jurnosc);
+  odpoczynek = _odpoczynek - (int) (odpoczynek_a_jurnosc * jurnosc);
 
   return;
 }
@@ -72,7 +73,8 @@ Wampirzec::ChwilaZycia (const list < Wampirzec * >wszystkie_wampirzce)
   return nowy;
 }
 
-bool Wampirzec::CzyMartwy (void)
+bool
+Wampirzec::CzyMartwy (void)
 {
   if (zycie <= 0)
     {
@@ -88,7 +90,7 @@ bool Wampirzec::CzyMartwy (void)
 void
 Wampirzec::Przesun (unsigned char kierunek = 5, const double _odleglosc = 1)
 {
-  double odleglosc = _odleglosc + getrandom(0, szybkosc_a_jurnosc * jurnosc);
+  double odleglosc = _odleglosc + getrandom (0, szybkosc_a_jurnosc * jurnosc);
   switch (kierunek)
     {
     case 1:
@@ -229,19 +231,31 @@ Wampirzec::RozmnazajSie (Wampirzec * partner)
   if (partner != this && ilosc_wampirzcow <= pojemnosc_srodowiska)
     {
       // dojdzie do mutacji kodu genetycznego?
-      if ( getrandom (0, 100) < prawdopodobienstwo_mutacji - (prawdopodobienstwo_mutacji_a_jurnosc * jurnosc) ) {
-        nowy = new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY ());
-      } else { // nie, dziedzicza po jednym z rodzicow
-	double j = getrandom (0, 1) ? jurnosc : partner->jurnosc;
-        unsigned int z = getrandom (0, 1) ? zycie : partner->zycie;
-	unsigned int o = getrandom (0, 1) ? odpoczynek : partner->odpoczynek;
-	nowy = new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY (), j, z, o);
-      }
+      if (getrandom (0, 100) <
+	  prawdopodobienstwo_mutacji -
+	  (prawdopodobienstwo_mutacji_a_jurnosc * jurnosc))
+	{
+	  nowy = new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY ());
+	}
+      else
+	{			// nie, dziedzicza po jednym z rodzicow
+	  double j = getrandom (0, 1) ? jurnosc : partner->jurnosc;
+	  unsigned int z = getrandom (0, 1) ? zycie : partner->zycie;
+	  unsigned int o =
+	    getrandom (0, 1) ? odpoczynek : partner->odpoczynek;
+	  nowy =
+	    new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY (), j, z,
+			   o);
+	}
       ++ilosc_wampirzcow;
     }
 
-  odpoczynek = odpoczynek_minimalny + (int)(odpoczynek_minimalny * odpoczynek_a_jurnosc * jurnosc);
-  partner->odpoczynek = odpoczynek_minimalny + (int)(odpoczynek_minimalny * odpoczynek_a_jurnosc * jurnosc);
+  odpoczynek =
+    odpoczynek_minimalny +
+    (int) (odpoczynek_minimalny * odpoczynek_a_jurnosc * jurnosc);
+  partner->odpoczynek =
+    odpoczynek_minimalny +
+    (int) (odpoczynek_minimalny * odpoczynek_a_jurnosc * jurnosc);
 
   return nowy;
 }
