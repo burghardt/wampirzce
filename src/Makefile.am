@@ -1,5 +1,4 @@
-#-DGL_FULL_SCREEN
-AM_CXXFLAGS = -ffast-math -funroll-loops -O3 -mcpu=athlon -march=athlon -g
+AM_CXXFLAGS = -DGL_FULL_SCREEN -ffast-math -funroll-loops -O3 -mcpu=athlon -march=athlon -g
 AM_LDFLAGS  = -L/usr/X11R6/lib -lGL -lGLU -lglut -lXi -lXmu
 
 bin_PROGRAMS = wampirzce
