@@ -25,12 +25,12 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.11 2004-02-24 00:25:43 einstein Exp $";
+static char *id = "$Id: main.C,v 1.12 2004-02-27 08:57:40 einstein Exp $";
 
 // ************************************************** //
 
-unsigned int wielkosc_okna_x = 900;
-unsigned int wielkosc_okna_y = 700;
+unsigned int wielkosc_okna_x = 1024;
+unsigned int wielkosc_okna_y = 768;
 
 const unsigned int wielkosc_ekosystemu_x = 1800;
 const unsigned int wielkosc_ekosystemu_y = 1400;
@@ -78,7 +78,11 @@ main (int argc, char **argv)
   SDL_Surface *
     surface = SDL_SetVideoMode (wielkosc_okna_x,
 				wielkosc_okna_y,
-				32, SDL_OPENGL);
+				32,
+				SDL_OPENGL |
+				SDL_DOUBLEBUF |
+				SDL_FULLSCREEN
+				);
   SDL_WM_SetCaption (PACKAGE_STRING, PACKAGE_STRING);
 
   SDL_Event event;
