@@ -17,8 +17,6 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: main.C,v 1.3 2004-02-05 00:14:38 einstein Exp $
-
 #include <iostream>
 #include <GL/freeglut.h>
 
@@ -27,7 +25,7 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.3 2004-02-05 00:14:38 einstein Exp $";
+static char *id = "$Id: main.C,v 1.4 2004-02-05 00:18:59 einstein Exp $";
 
 // ************************************************** //
 
