@@ -6,6 +6,8 @@
 
 using namespace std;
 
+static char *id = "@(#) $Id: main.C,v 1.2 2004-02-04 23:51:31 einstein Exp $";
+
 // ************************************************** //
 
 const unsigned int wielkosc_ekosystemu_x = 800;
@@ -55,6 +57,8 @@ BrykajaceWampirzce (void)
 int
 main (int argc, char **argv)
 {
+  cout << PACKAGE_STRING << endl;
+  cout << id << endl << endl;
   clog << "Uruchamiam FreeGLUT..." << endl;
   glutInit (&argc, argv);
   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
@@ -73,7 +77,7 @@ main (int argc, char **argv)
 	   1.0);
   clog << "Rejestruje funkcje obslugi wyswietlania..." << endl;
   glutDisplayFunc (&BrykajaceWampirzce);
-  clog << "Rozpoczynam symulacje..." << endl;
+  clog << "Rozpoczynam symulacje..." << endl << endl;
   glutMainLoop ();
   return 0;
 }
