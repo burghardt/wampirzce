@@ -1,5 +1,5 @@
-AM_CXXFLAGS = -DGL_FULL_SCREEN -ffast-math -funroll-loops -O3 -mcpu=athlon -march=athlon -g
-AM_LDFLAGS  = -L/usr/X11R6/lib -lGL -lGLU -lglut -lXi -lXmu
+AM_CXXFLAGS = -DGL_FULL_SCREEN -O2
+AM_LDFLAGS  = -L/usr/X11R6/lib
 
 bin_PROGRAMS = wampirzce
 wampirzce_SOURCES = polozenie.C wampirzec.C kolonia.C main.C \
