@@ -9,11 +9,12 @@ AM_INIT_AUTOMAKE
 AC_PROG_CXX
 
 # Checks for header files.
-AC_CHECK_HEADER(sys/time.h,,AC_MSG_ERROR(No sys/time.h found!))
-AC_CHECK_HEADER(GL/glut.h,,AC_MSG_ERROR(No GL/glut.h found!))
+AC_CHECK_HEADER(sys/time.h,,AC_MSG_ERROR([sys/time.h not found!]))
+AC_CHECK_HEADER(GL/glut.h,,AC_MSG_ERROR([GL/glut.h not found!]))
 
 # Checks for library functions.
-#AC_CHECK_LIB(Xxf86vm,XF86VidModeSetViewPort,,AC_MSG_ERROR(Xxf86vm))
+AC_CHECK_LIB(GL,main,LIBS="$LIBS -lGL",AC_MSG_ERROR([libGL not found!]))
+LIBS="$LIBS -lglut"
 
 AC_CONFIG_FILES([Makefile
  src/Makefile
