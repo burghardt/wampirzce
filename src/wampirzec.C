@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.C,v 1.5 2004-02-24 00:13:18 einstein Exp $
+// $Id: wampirzec.C,v 1.6 2004-06-30 13:02:06 einstein Exp $
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -48,7 +48,7 @@ Polozenie (_x, _y)
 }
 
 Wampirzec *
-Wampirzec::ChwilaZycia (const list < Wampirzec * >wszystkie_wampirzce)
+Wampirzec::ChwilaZycia (const deque < Wampirzec * >wszystkie_wampirzce)
 {
   Wampirzec *nowy = NULL;
   if (zycie)
@@ -85,6 +85,12 @@ bool Wampirzec::CzyMartwy (void)
     {
       return 0;
     }
+}
+
+void
+Wampirzec::UstawIloscWampirzcow (const unsigned int nowa_ilosc_wampirzcow)
+{
+  ilosc_wampirzcow = nowa_ilosc_wampirzcow;
 }
 
 void
@@ -153,11 +159,11 @@ Wampirzec::Odpocznij (void)
 }
 
 Wampirzec *
-Wampirzec::SzukajPartnera (list < Wampirzec * >cale_stado)
+Wampirzec::SzukajPartnera (deque < Wampirzec * >cale_stado)
 {
   Wampirzec *najblizszy = NULL;
-  list < Wampirzec * >::iterator poczatek = cale_stado.begin ();
-  list < Wampirzec * >::iterator koniec = cale_stado.end ();
+  deque < Wampirzec * >::iterator poczatek = cale_stado.begin ();
+  deque < Wampirzec * >::iterator koniec = cale_stado.end ();
   najblizszy = (*poczatek++);
 
   while (poczatek != koniec)

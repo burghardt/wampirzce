@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.C,v 1.6 2004-02-27 16:36:45 einstein Exp $
+// $Id: kolonia.C,v 1.7 2004-06-30 13:02:06 einstein Exp $
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -29,7 +29,7 @@
 
 using namespace std;
 
-void
+static void
 glDrawText (const char *text)
 {
   for (unsigned int i = 0; i < strlen (text); i++)
@@ -49,12 +49,34 @@ Kolonia::Kolonia (void)
   return;
 }
 
+Kolonia::~Kolonia (void)
+{
+  deque < Wampirzec * >::iterator poczatek = stado.begin ();
+  deque < Wampirzec * >::iterator koniec = stado.end ();
+
+  while (poczatek != koniec)
+    {
+      delete (*poczatek);
+      ++poczatek;
+    }
+
+  stado.empty ();
+
+  return;
+}
+
+Wampirzec *
+Kolonia::operator [] (unsigned int index)
+{
+  return stado[index];
+}
+
 void
 Kolonia::ChwilaZycia (void)
 {
   ++iteracji;
-  list < Wampirzec * >::iterator poczatek = stado.begin ();
-  list < Wampirzec * >::iterator koniec = stado.end ();
+  deque < Wampirzec * >::iterator poczatek = stado.begin ();
+  deque < Wampirzec * >::iterator koniec = stado.end ();
   Wampirzec *nowy = NULL;
 
   if (poczatek == koniec)
@@ -79,8 +101,7 @@ Kolonia::ChwilaZycia (void)
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
   glOrtho (0.0, wielkosc_okna_x, 0,
-	   wielkosc_okna_y - ((wielkosc_okna_y / 50.0) + 5),
-	   -1.0, 1.0);
+	   wielkosc_okna_y - ((wielkosc_okna_y / 50.0) + 5), -1.0, 1.0);
   glColor4f (0.7f, 0.6f, 0.5f, 0.4f);
   glEnable (GL_BLEND);
   glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -108,8 +129,8 @@ Kolonia::ChwilaZycia (void)
   sprintf (buffer, "%d", iteracji);
   glDrawText (buffer);
 
-  glTranslatef (wielkosc_okna_x * 3.0/4.0 + 10, 0.f, 0.f);
-  glDrawText ("Press ESC to exit");
+  glTranslatef (wielkosc_okna_x * 3.0 / 4.0 + 10, 0.f, 0.f);
+  glDrawText ("Klawiszologia: [R]estart, [W]yjscie");
 
   glDisable (GL_LINE_SMOOTH);
 

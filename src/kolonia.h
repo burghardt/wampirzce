@@ -19,12 +19,12 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.h,v 1.4 2004-02-24 00:13:18 einstein Exp $
+// $Id: kolonia.h,v 1.5 2004-06-30 13:02:06 einstein Exp $
 
 #ifndef __KOLONIA_H__
 #define __KOLONIA_H__
 
-#include <list>
+#include <deque>
 #include "wampirzec.h"
 
 using namespace std;
@@ -39,9 +39,13 @@ class Kolonia
 {
 public:
   Kolonia (void);
+   ~Kolonia (void);
+
+  Wampirzec *operator [] (unsigned int);
+
   void ChwilaZycia (void);
 private:
-    list < Wampirzec * >stado;
+    deque < Wampirzec * >stado;
   unsigned long long int iteracji;
 };
 
