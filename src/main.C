@@ -25,7 +25,7 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.8 2004-02-06 20:02:36 einstein Exp $";
+static char *id = "$Id: main.C,v 1.9 2004-02-06 20:17:21 einstein Exp $";
 
 // ************************************************** //
 
@@ -82,7 +82,7 @@ main (int argc, char **argv)
 {
   cout << PACKAGE_STRING << endl;
   cout << id << endl << endl;
-  clog << "Uruchamiam FreeGLUT..." << endl;
+  clog << "Uruchamiam GLUT..." << endl;
   glutInit (&argc, argv);
   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
   glutInitWindowSize (wielkosc_ekosystemu_x,

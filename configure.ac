@@ -14,7 +14,6 @@ AC_CHECK_HEADER(GL/glut.h,,AC_MSG_ERROR(No GL/glut.h found!))
 
 # Checks for library functions.
 #AC_CHECK_LIB(Xxf86vm,XF86VidModeSetViewPort,,AC_MSG_ERROR(Xxf86vm))
-#AC_CHECK_LIB(freeglut-1.3,glutInit,,AC_MSG_ERROR(freeglut-1.3))
 
 AC_CONFIG_FILES([Makefile
  src/Makefile
