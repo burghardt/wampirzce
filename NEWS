@@ -1,6 +1,14 @@
 
  Release Notes
  =============
+ *******************
+ 0.0.2 (24 Feb 2004)
+ *******************
+
+* rewritten to use SDL_opengl (not glut).
+* added status bar.
+* many improvments.
+* small bugfix.
 
  *******************
  0.0.1 (04 Feb 2004)

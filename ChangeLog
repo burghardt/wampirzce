@@ -1,3 +1,9 @@
+2004-02-24  Krzysztof Burghardt
+
+	* main.C: Moved from glut to SDL_opengl.
+	* main.C: BrykajaceWampirzce(): function removed.
+	* kolonia.C: ChwilaZycia(): Added status bar.
+
 2004-02-04  Krzysztof Burghardt
 
 	* wampirzec.C: Math model improvements.

@@ -1,4 +1,4 @@
-AC_INIT([Symulacja Wampirzcow-Rozpustnikow], [0.0.1], [einstein@underground.org.pl], [wampirzce])
+AC_INIT([Symulacja Wampirzcow-Rozpustnikow], [0.0.2], [einstein@underground.org.pl], [wampirzce])
 #AC_PREREQ([2.57])
 AC_CONFIG_AUX_DIR(build)
 AC_CONFIG_SRCDIR(src/main.C)
