@@ -18,21 +18,24 @@
 */
 
 #include <iostream>
-#include <GL/glut.h>
-
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 #include "config.h"
 #include "kolonia.h"
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.9 2004-02-06 20:17:21 einstein Exp $";
+static char *id = "$Id: main.C,v 1.10 2004-02-24 00:13:18 einstein Exp $";
 
 // ************************************************** //
 
-const unsigned int wielkosc_ekosystemu_x = 1024;
-const unsigned int wielkosc_ekosystemu_y = 786;
+unsigned int wielkosc_okna_x = 900;
+unsigned int wielkosc_okna_y = 700;
 
-const unsigned int pojemnosc_srodowiska = 90;
+const unsigned int wielkosc_ekosystemu_x = 2000;
+const unsigned int wielkosc_ekosystemu_y = 1000;
+
+const unsigned int pojemnosc_srodowiska = 190;
 const unsigned int wampirzcow_na_poczatku = 8;
 
 const unsigned int jurnosc_minimalna = 2;
@@ -56,52 +59,71 @@ unsigned int
 
 // ************************************************** //
 
-Kolonia
-  Wampirzcow;
+Kolonia Wampirzcow;
 
 // ************************************************** //
-
-void
-BrykajaceWampirzce (void)
-{
-  for (;;)
-    {
-      glClear (GL_COLOR_BUFFER_BIT);
-      glClearColor (0.0, 0.0, 0.0, 0.0);
-
-      Wampirzcow.ChwilaZycia ();
-//      usleep (25000);
-
-      glFlush ();
-      glutSwapBuffers ();
-    }
-}
 
 int
 main (int argc, char **argv)
 {
-  cout << PACKAGE_STRING << endl;
-  cout << id << endl << endl;
-  clog << "Uruchamiam GLUT..." << endl;
-  glutInit (&argc, argv);
-  glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
-  glutInitWindowSize (wielkosc_ekosystemu_x,
-		      wielkosc_ekosystemu_y - ((wielkosc_ekosystemu_y / 50) +
-					       5));
-  glutInitWindowPosition (50, 50);
-  glutCreateWindow (PACKAGE_STRING);
-#ifdef GL_FULL_SCREEN
-  glutFullScreen ();
-#endif
-  glMatrixMode (GL_PROJECTION);
-  glLoadIdentity ();
-  glOrtho (0.0, wielkosc_ekosystemu_x, 0.0,
-	   wielkosc_ekosystemu_y - ((wielkosc_ekosystemu_y / 50) + 5), -1.0,
-	   1.0);
-  clog << "Rejestruje funkcje obslugi wyswietlania..." << endl;
-  glutDisplayFunc (&BrykajaceWampirzce);
-  clog << "Rozpoczynam symulacje..." << endl << endl;
-  glutMainLoop ();
+  cout << PACKAGE_STRING << endl << id << endl;
 
+  SDL_Init (SDL_INIT_VIDEO | SDL_INIT_TIMER);
+  SDL_GL_SetAttribute (SDL_GL_DOUBLEBUFFER, true);
+  SDL_GL_SetAttribute (SDL_GL_RED_SIZE, 8);
+  SDL_GL_SetAttribute (SDL_GL_GREEN_SIZE, 8);
+  SDL_GL_SetAttribute (SDL_GL_BLUE_SIZE, 8);
+  SDL_GL_SetAttribute (SDL_GL_ALPHA_SIZE, 8);
+  SDL_GL_SetAttribute (SDL_GL_STENCIL_SIZE, 1);
+  SDL_Surface *
+    surface = SDL_SetVideoMode (wielkosc_okna_x,
+				wielkosc_okna_y,
+				32, SDL_OPENGL);
+  SDL_WM_SetCaption (PACKAGE_STRING, PACKAGE_STRING);
+
+  SDL_Event event;
+  bool go_quit = false;
+  unsigned int
+    startTime = 0;
+  unsigned int
+    endTime = 0;
+
+  while (!go_quit)
+    {
+      startTime = SDL_GetTicks ();
+      while (SDL_PollEvent (&event))
+	{
+	  switch (event.type)
+	    {
+	    case SDL_KEYDOWN:
+	      break;
+	    case SDL_KEYUP:
+	      switch (event.key.keysym.sym)
+		{
+		case SDLK_ESCAPE:
+		  go_quit = true;
+		  break;
+		}
+	      break;
+	    case SDL_QUIT:
+	      go_quit = true;
+	      break;
+	    }
+	}
+      glMatrixMode (GL_PROJECTION);
+      glLoadIdentity ();
+      glOrtho (0.0, wielkosc_ekosystemu_x, 0,
+	       wielkosc_ekosystemu_y - ((wielkosc_ekosystemu_y / 50) + 5),
+	       -1.0, 1.0);
+      glClearColor (0.0, 0.0, 0.0, 0.0);
+      glClear (GL_COLOR_BUFFER_BIT);
+      Wampirzcow.ChwilaZycia ();
+      glFlush ();
+      SDL_GL_SwapBuffers ();
+      endTime = SDL_GetTicks ();
+      if (endTime - startTime < 5)
+	SDL_Delay (5 - (startTime - endTime));
+    }
+  SDL_Quit ();
   return 0;
 }

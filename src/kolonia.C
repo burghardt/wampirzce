@@ -19,12 +19,24 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.C,v 1.3 2004-02-06 19:46:31 einstein Exp $
+// $Id: kolonia.C,v 1.4 2004-02-24 00:13:18 einstein Exp $
 
 #include <iostream>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
+#include <GL/glut.h>
 #include "kolonia.h"
 
 using namespace std;
+
+void
+glDrawText (const char *text)
+{
+  for (unsigned int i = 0; i < strlen (text); i++)
+    {
+      glutStrokeCharacter (GLUT_STROKE_MONO_ROMAN, text[i]);
+    }
+}
 
 Kolonia::Kolonia (void)
 {
@@ -64,12 +76,39 @@ Kolonia::ChwilaZycia (void)
 	}
     }
 
-  if (iteracji % 25 == 0)
-    {
-      cout << "[ ----------------------------- ]" << endl;
-      cout << "[ Iteracji: \t\t" << iteracji << "\t]" << endl;
-      cout << "[ Liczba Wampirzcow: \t" << stado.size () << "\t]" << endl;
-    }
+  glMatrixMode (GL_PROJECTION);
+  glLoadIdentity ();
+  glOrtho (0.0, wielkosc_okna_x, 0,
+	   wielkosc_okna_y - ((wielkosc_okna_y / 50) + 5),
+	   -1.0, 1.0);
+  glColor4f (0.7f, 0.6f, 0.5f, 0.4f);
+  glEnable (GL_BLEND);
+  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glBegin (GL_QUADS);
+  glVertex2f (0.f, 0.f);
+  glVertex2f (wielkosc_okna_x, 0.f);
+  glVertex2f (wielkosc_okna_x, 40.f);
+  glVertex2f (0.f, 40.f);
+  glEnd ();
+
+  glColor3f (1.f, 1.f, 1.f);
+  glEnable (GL_LINE_SMOOTH);
+  glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
+
+  char buffer[32];
+  glScalef (0.2f, 0.2f, 1.0f);
+
+  glTranslatef (100.f, 50.f, 0.f);
+  glDrawText ("Wampirzcow: ");
+  sprintf (buffer, "%d", stado.size ());
+  glDrawText (buffer);
+
+  glTranslatef (wielkosc_okna_x / 2 + 100, 0.f, 0.f);
+  glDrawText ("Iteracji: ");
+  sprintf (buffer, "%d", iteracji);
+  glDrawText (buffer);
+
+  glDisable (GL_LINE_SMOOTH);
 
   return;
 }

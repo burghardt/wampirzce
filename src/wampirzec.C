@@ -19,10 +19,11 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.C,v 1.4 2004-02-06 19:46:31 einstein Exp $
+// $Id: wampirzec.C,v 1.5 2004-02-24 00:13:18 einstein Exp $
 
 #include <iostream>
-#include <GL/glut.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 #include "wampirzec.h"
 
 using namespace std;
@@ -73,8 +74,7 @@ Wampirzec::ChwilaZycia (const list < Wampirzec * >wszystkie_wampirzce)
   return nowy;
 }
 
-bool
-Wampirzec::CzyMartwy (void)
+bool Wampirzec::CzyMartwy (void)
 {
   if (zycie <= 0)
     {

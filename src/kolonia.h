@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.h,v 1.3 2004-02-06 19:46:31 einstein Exp $
+// $Id: kolonia.h,v 1.4 2004-02-24 00:13:18 einstein Exp $
 
 #ifndef __KOLONIA_H__
 #define __KOLONIA_H__
@@ -29,6 +29,10 @@
 
 using namespace std;
 
+extern unsigned int wielkosc_okna_x;
+extern unsigned int wielkosc_okna_y;
+extern const unsigned int wielkosc_ekosystemu_x;
+extern const unsigned int wielkosc_ekosystemu_y;
 extern const unsigned int wampirzcow_na_poczatku;
 
 class Kolonia
