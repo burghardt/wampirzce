@@ -19,9 +19,10 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.C,v 1.7 2004-06-30 13:02:56 einstein Exp $
+// $Id: wampirzec.C,v 1.8 2005-08-03 19:06:20 kb Exp $
 
 #include <iostream>
+#include <cmath>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include "wampirzec.h"
