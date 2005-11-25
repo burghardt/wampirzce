@@ -20,12 +20,13 @@
 #include <iostream>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
+#include <GL/freeglut.h>
 #include "config.h"
 #include "kolonia.h"
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.14 2004-06-30 13:02:56 einstein Exp $";
+static char *id = "$Id: main.C,v 1.15 2005-11-25 15:24:43 kb Exp $";
 
 unsigned int wielkosc_okna_x = 1024;
 unsigned int wielkosc_okna_y = 768;
@@ -62,6 +63,7 @@ main (int argc, char **argv)
   cout << PACKAGE_STRING << endl << id << endl;
 
   SDL_Init (SDL_INIT_VIDEO | SDL_INIT_TIMER);
+  glutInit (&argc, argv);
   SDL_GL_SetAttribute (SDL_GL_DOUBLEBUFFER, true);
   SDL_GL_SetAttribute (SDL_GL_RED_SIZE, 8);
   SDL_GL_SetAttribute (SDL_GL_GREEN_SIZE, 8);
