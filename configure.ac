@@ -1,5 +1,4 @@
 AC_INIT([Symulacja Wampirzcow-Rozpustnikow], [1.0.0], [einstein@underground.org.pl], [wampirzce])
-#AC_PREREQ([2.57])
 AC_CONFIG_AUX_DIR(build)
 AC_CONFIG_SRCDIR(src/main.C)
 AM_CONFIG_HEADER(config.h)
@@ -21,7 +20,7 @@ LIBS="$LIBS -L/usr/X11R6/lib -lglut"
 # Check for SDL (via sdl-config)
 AC_MSG_CHECKING(for SDL)
 if test -x "`which sdl-config 2>/dev/null`"; then
-    FLAGS="$FLAGS `sdl-config --cflags`"
+    CXXFLAGS="$CXXFLAGS `sdl-config --cflags`"
     LIBS="$LIBS `sdl-config --libs`"
     AC_MSG_RESULT(yes)
 else
