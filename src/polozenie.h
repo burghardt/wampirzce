@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: polozenie.h,v 1.2 2004-02-05 00:14:38 einstein Exp $
+// $Id: polozenie.h,v 1.3 2007-11-01 17:07:20 kb Exp $
 
 #ifndef __POLOZENIE_H__
 #define __POLOZENIE_H__
@@ -36,7 +36,6 @@ protected:
   double PobierzPolozenieX (void);
   double PobierzPolozenieY (void);
   void UstawPolozenieXY (const double, const double);
-  virtual void Przesun (unsigned char, const double) = 0;
 private:
   double x;
   double y;

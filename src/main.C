@@ -18,6 +18,7 @@
 */
 
 #include <iostream>
+#include <cstdio>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include <GL/freeglut.h>
@@ -26,7 +27,7 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.16 2007-11-01 10:29:03 kb Exp $";
+static char *id = "$Id: main.C,v 1.17 2007-11-01 17:07:20 kb Exp $";
 
 unsigned int wielkosc_okna_x = 1024;
 unsigned int wielkosc_okna_y = 768;
@@ -72,7 +73,8 @@ main (int argc, char **argv)
     surface = SDL_SetVideoMode (wielkosc_okna_x,
 				wielkosc_okna_y,
 				16,
-				SDL_OPENGL | SDL_ANYFORMAT | SDL_DOUBLEBUF | SDL_FULLSCREEN);
+				SDL_OPENGL | SDL_ANYFORMAT | SDL_DOUBLEBUF
+				| SDL_FULLSCREEN);
   if(!surface)
     {
 	clog << "BUG: " << __FILE__ << ":" << __LINE__ <<                                                                                    
@@ -108,8 +110,6 @@ main (int argc, char **argv)
 		case SDLK_r:	// restart symulacji
 		  delete KoloniaWampirzcow;
 		  KoloniaWampirzcow = new Kolonia;
-		  (*KoloniaWampirzcow)[0]->
-		    UstawIloscWampirzcow (wampirzcow_na_poczatku);
 		  break;
 		case SDLK_ESCAPE:	// koniec symulacji
 		case SDLK_q:

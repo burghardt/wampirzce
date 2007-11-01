@@ -19,12 +19,12 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.h,v 1.4 2004-06-30 13:02:06 einstein Exp $
+// $Id: wampirzec.h,v 1.5 2007-11-01 17:07:20 kb Exp $
 
 #ifndef __WAMPIRZEC_H__
 #define __WAMPIRZEC_H__
 
-#include <deque>
+#include <list>
 #include <sys/time.h>
 #include "polozenie.h"
 
@@ -64,14 +64,14 @@ public:
 	     const unsigned int _zycie =
 	     zycie_minimalne + getrandom (0, zycie_minimalne),
 	     const unsigned int _odpoczynek = odpoczynek_minimalny);
-  Wampirzec *ChwilaZycia (const deque < Wampirzec * >);
+  Wampirzec *ChwilaZycia (const list < Wampirzec * >);
   bool CzyMartwy (void);
   void UstawIloscWampirzcow (const unsigned int);
 protected:
   void Przesun (const unsigned char, const double);
   double Odleglosc (Wampirzec *);
   void Odpocznij (void);
-  Wampirzec *SzukajPartnera (deque < Wampirzec * >);
+  Wampirzec *SzukajPartnera (list < Wampirzec * >);
   Wampirzec *RozmnazajSie (Wampirzec *);
 private:
   double jurnosc;

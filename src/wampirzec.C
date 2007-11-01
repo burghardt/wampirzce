@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: wampirzec.C,v 1.8 2005-08-03 19:06:20 kb Exp $
+// $Id: wampirzec.C,v 1.9 2007-11-01 17:07:20 kb Exp $
 
 #include <iostream>
 #include <cmath>
@@ -49,7 +49,7 @@ Polozenie (_x, _y)
 }
 
 Wampirzec *
-Wampirzec::ChwilaZycia (const deque < Wampirzec * >wszystkie_wampirzce)
+Wampirzec::ChwilaZycia (const list < Wampirzec * >wszystkie_wampirzce)
 {
   Wampirzec *nowy = NULL;
   if (zycie)
@@ -161,11 +161,11 @@ Wampirzec::Odpocznij (void)
 }
 
 Wampirzec *
-Wampirzec::SzukajPartnera (deque < Wampirzec * >cale_stado)
+Wampirzec::SzukajPartnera (list < Wampirzec * >cale_stado)
 {
   Wampirzec *najblizszy = NULL;
-  deque < Wampirzec * >::iterator poczatek = cale_stado.begin ();
-  deque < Wampirzec * >::iterator koniec = cale_stado.end ();
+  list < Wampirzec * >::iterator poczatek = cale_stado.begin ();
+  list < Wampirzec * >::iterator koniec = cale_stado.end ();
   najblizszy = (*poczatek++);
 
   while (poczatek != koniec)

@@ -19,7 +19,7 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// $Id: kolonia.C,v 1.7 2004-06-30 13:02:06 einstein Exp $
+// $Id: kolonia.C,v 1.8 2007-11-01 17:07:20 kb Exp $
 
 #include <iostream>
 #include <SDL/SDL.h>
@@ -45,14 +45,15 @@ Kolonia::Kolonia (void)
     {
       stado.push_back (new Wampirzec ());
     }
+  (*stado.begin())->UstawIloscWampirzcow (wampirzcow_na_poczatku);
 
   return;
 }
 
 Kolonia::~Kolonia (void)
 {
-  deque < Wampirzec * >::iterator poczatek = stado.begin ();
-  deque < Wampirzec * >::iterator koniec = stado.end ();
+  list < Wampirzec * >::iterator poczatek = stado.begin ();
+  list < Wampirzec * >::iterator koniec = stado.end ();
 
   while (poczatek != koniec)
     {
@@ -65,18 +66,12 @@ Kolonia::~Kolonia (void)
   return;
 }
 
-Wampirzec *
-Kolonia::operator [] (unsigned int index)
-{
-  return stado[index];
-}
-
 void
 Kolonia::ChwilaZycia (void)
 {
   ++iteracji;
-  deque < Wampirzec * >::iterator poczatek = stado.begin ();
-  deque < Wampirzec * >::iterator koniec = stado.end ();
+  list < Wampirzec * >::iterator poczatek = stado.begin ();
+  list < Wampirzec * >::iterator koniec = stado.end ();
   Wampirzec *nowy = NULL;
 
   if (poczatek == koniec)
