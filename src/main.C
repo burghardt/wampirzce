@@ -26,7 +26,7 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.15 2005-11-25 15:24:43 kb Exp $";
+static char *id = "$Id: main.C,v 1.16 2007-11-01 10:29:03 kb Exp $";
 
 unsigned int wielkosc_okna_x = 1024;
 unsigned int wielkosc_okna_y = 768;
@@ -65,16 +65,21 @@ main (int argc, char **argv)
   SDL_Init (SDL_INIT_VIDEO | SDL_INIT_TIMER);
   glutInit (&argc, argv);
   SDL_GL_SetAttribute (SDL_GL_DOUBLEBUFFER, true);
-  SDL_GL_SetAttribute (SDL_GL_RED_SIZE, 8);
-  SDL_GL_SetAttribute (SDL_GL_GREEN_SIZE, 8);
-  SDL_GL_SetAttribute (SDL_GL_BLUE_SIZE, 8);
-  SDL_GL_SetAttribute (SDL_GL_ALPHA_SIZE, 8);
-  SDL_GL_SetAttribute (SDL_GL_STENCIL_SIZE, 1);
+  SDL_GL_SetAttribute (SDL_GL_RED_SIZE, 5);
+  SDL_GL_SetAttribute (SDL_GL_GREEN_SIZE, 5);
+  SDL_GL_SetAttribute (SDL_GL_BLUE_SIZE, 5);
   SDL_Surface *
     surface = SDL_SetVideoMode (wielkosc_okna_x,
 				wielkosc_okna_y,
-				32,
-				SDL_OPENGL | SDL_DOUBLEBUF | SDL_FULLSCREEN);
+				16,
+				SDL_OPENGL | SDL_ANYFORMAT | SDL_DOUBLEBUF | SDL_FULLSCREEN);
+  if(!surface)
+    {
+	clog << "BUG: " << __FILE__ << ":" << __LINE__ <<                                                                                    
+            " main() - SDL_SetVideoMode() nie utworzylo powierzchni!" << endl;
+	return 0;
+    }
+  
   SDL_WM_SetCaption (PACKAGE_STRING, PACKAGE_STRING);
 
   SDL_Event
