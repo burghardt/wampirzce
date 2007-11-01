@@ -1,15 +1,19 @@
+2007-11-01  Krzysztof Burghardt
+
+	* src/main.C, src/kolonia.C: Fixed memory handling bug.
+
 2004-02-04  Krzysztof Burghardt
 
 	* configure.ac: Bumped to 1.0.0 (released, first version).
 
 2004-02-24  Krzysztof Burghardt
 
-	* main.C: Moved from glut to SDL_opengl.
-	* main.C: BrykajaceWampirzce(): function removed.
-	* kolonia.C: ChwilaZycia(): Added status bar.
+	* src/main.C: Moved from glut to SDL_opengl.
+	* src/main.C: BrykajaceWampirzce(): function removed.
+	* src/kolonia.C: ChwilaZycia(): Added status bar.
 
 2004-02-04  Krzysztof Burghardt
 
-	* wampirzec.C: Math model improvements.
-	* main.C: Many configuration option has been added.
+	* src/wampirzec.C: Math model improvements.
+	* src/main.C: Many configuration option has been added.
 	* configure.ac: Bumped to 0.0.1 (unreleased, internal version).
