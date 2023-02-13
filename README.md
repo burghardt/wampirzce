@@ -1,7 +1,8 @@
 Wampirzce
 ---------
 
-Symulacja Wampirzcow-Rozpustnikow
+Symulacja Wampirzców-Rozpustników (pol. The Libertine Vampire Simulation) - a
+zero-player game inspired by Conway's Game of Life.
 
 How to build it?
 ----------------
