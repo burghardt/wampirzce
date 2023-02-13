@@ -61,7 +61,7 @@ Kolonia::~Kolonia (void)
       ++poczatek;
     }
 
-  stado.empty ();
+  stado.clear ();
 
   return;
 }
