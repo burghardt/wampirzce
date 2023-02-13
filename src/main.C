@@ -26,11 +26,11 @@
 
 using namespace std;
 
-unsigned int wielkosc_okna_x = 1024;
-unsigned int wielkosc_okna_y = 768;
+unsigned int wielkosc_okna_x = 1920;
+unsigned int wielkosc_okna_y = 1080;
 
-const unsigned int wielkosc_ekosystemu_x = 1800;
-const unsigned int wielkosc_ekosystemu_y = 1400;
+const unsigned int wielkosc_ekosystemu_x = 2560;
+const unsigned int wielkosc_ekosystemu_y = 1440;
 
 const unsigned int pojemnosc_srodowiska = 120;
 const unsigned int wampirzcow_na_poczatku = 12;
@@ -44,7 +44,7 @@ const unsigned int zycie_a_jurnosc = 5;
 const unsigned int odpoczynek_minimalny = 32;
 const double odpoczynek_a_jurnosc = 0.05;
 
-const unsigned int prawdopodobienstwo_mutacji = 20;        // w %
+const unsigned int prawdopodobienstwo_mutacji = 20; // w %
 const double prawdopodobienstwo_mutacji_a_jurnosc = 0.5;
 
 const double szybkosc_a_jurnosc = 0.7;
