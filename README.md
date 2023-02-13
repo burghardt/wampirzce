@@ -11,7 +11,12 @@ To compile it you will need:
  * freeglut
  * automake
 
-Install `SDL-devel`, `freeglut-devel` and `automake` (Fedora):
+Install `libsdl1.2-dev`, `freeglut3-dev` and `automake` on Debian/Ubuntu:
+
+    # sudo apt update -qq
+    # sudo apt install libsdl1.2-dev freeglut3-dev automake
+
+Install `SDL-devel`, `freeglut-devel` and `automake` on Fedora:
 
     # sudo dnf install SDL-devel freeglut-devel automake
 
