@@ -1,3 +1,7 @@
+2023-02-13  Krzysztof Burghardt
+
+	* ChangeLog: Discontinued, please refer to SCM history.
+
 2007-11-01  Krzysztof Burghardt
 
 	* src/main.C, src/kolonia.C: Fixed memory handling bug.
