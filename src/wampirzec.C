@@ -37,8 +37,8 @@ glPutPixel (double x, double y, double z, double r, double g, double b)
 }
 
 Wampirzec::Wampirzec (const double _x, const double _y, const double _jurnosc,
-		      const unsigned int _zycie,
-		      const unsigned int _odpoczynek):
+                      const unsigned int _zycie,
+                      const unsigned int _odpoczynek):
 Polozenie (_x, _y)
 {
   jurnosc = _jurnosc;
@@ -55,20 +55,20 @@ Wampirzec::ChwilaZycia (const list < Wampirzec * >wszystkie_wampirzce)
   if (zycie)
     {
       glPutPixel (PobierzPolozenieX (), PobierzPolozenieY ()
-		  - ((wielkosc_ekosystemu_y / 50) + 5), 5,
-		  1, jurnosc / 20, jurnosc / 10);
+                  - ((wielkosc_ekosystemu_y / 50) + 5), 5,
+                  1, jurnosc / 20, jurnosc / 10);
       if (odpoczynek)
-	{
-	  Odpocznij ();
-	}
+        {
+          Odpocznij ();
+        }
       else
-	{
-	  Wampirzec *ZnalezionyPartner = NULL;
-	  if ((ZnalezionyPartner = SzukajPartnera (wszystkie_wampirzce)) != 0)
-	    {
-	      nowy = RozmnazajSie (ZnalezionyPartner);
-	    }
-	}
+        {
+          Wampirzec *ZnalezionyPartner = NULL;
+          if ((ZnalezionyPartner = SzukajPartnera (wszystkie_wampirzce)) != 0)
+            {
+              nowy = RozmnazajSie (ZnalezionyPartner);
+            }
+        }
       --zycie;
     }
 
@@ -103,42 +103,42 @@ Wampirzec::Przesun (unsigned char kierunek = 5, const double _odleglosc = 1)
     {
     case 1:
       UstawPolozenieXY (PobierzPolozenieX () - odleglosc,
-			PobierzPolozenieY () - odleglosc);
+                        PobierzPolozenieY () - odleglosc);
       break;
     case 2:
       UstawPolozenieXY (PobierzPolozenieX (),
-			PobierzPolozenieY () - odleglosc);
+                        PobierzPolozenieY () - odleglosc);
       break;
     case 3:
       UstawPolozenieXY (PobierzPolozenieX () + odleglosc,
-			PobierzPolozenieY () - odleglosc);
+                        PobierzPolozenieY () - odleglosc);
       break;
     case 4:
       UstawPolozenieXY (PobierzPolozenieX () - odleglosc,
-			PobierzPolozenieY ());
+                        PobierzPolozenieY ());
       break;
     case 5:
       UstawPolozenieXY (PobierzPolozenieX (), PobierzPolozenieY ());
       break;
     case 6:
       UstawPolozenieXY (PobierzPolozenieX () + odleglosc,
-			PobierzPolozenieY ());
+                        PobierzPolozenieY ());
       break;
     case 7:
       UstawPolozenieXY (PobierzPolozenieX () - odleglosc,
-			PobierzPolozenieY () + odleglosc);
+                        PobierzPolozenieY () + odleglosc);
       break;
     case 8:
       UstawPolozenieXY (PobierzPolozenieX (),
-			PobierzPolozenieY () + odleglosc);
+                        PobierzPolozenieY () + odleglosc);
       break;
     case 9:
       UstawPolozenieXY (PobierzPolozenieX () + odleglosc,
-			PobierzPolozenieY () + odleglosc);
+                        PobierzPolozenieY () + odleglosc);
       break;
     default:
       clog << "BUG: " << __FILE__ << ":" << __LINE__ <<
-	" Wampirzec::Przesun() - nieznany kierunek!" << endl;
+        " Wampirzec::Przesun() - nieznany kierunek!" << endl;
     }
 
   return;
@@ -148,8 +148,8 @@ double
 Wampirzec::Odleglosc (Wampirzec * partner)
 {
   return sqrt (pow (PobierzPolozenieX () - partner->PobierzPolozenieX (), 2)
-	       + pow (PobierzPolozenieY () - partner->PobierzPolozenieY (),
-		      2));
+               + pow (PobierzPolozenieY () - partner->PobierzPolozenieY (),
+                      2));
 }
 
 void
@@ -170,15 +170,15 @@ Wampirzec::SzukajPartnera (list < Wampirzec * >cale_stado)
 
   while (poczatek != koniec)
     {
-      if (*poczatek != this &&	// sam z soba sie nie rozmnozy
-	  Odleglosc (*poczatek) < Odleglosc (najblizszy))
-	{
-	  najblizszy = (*poczatek);
-	}
+      if (*poczatek != this &&        // sam z soba sie nie rozmnozy
+          Odleglosc (*poczatek) < Odleglosc (najblizszy))
+        {
+          najblizszy = (*poczatek);
+        }
       ++poczatek;
     }
 
-  if (Odleglosc (najblizszy) <= 3)	// sex na odleglosc? ;-P
+  if (Odleglosc (najblizszy) <= 3)        // sex na odleglosc? ;-P
     {
       return najblizszy;
     }
@@ -186,46 +186,46 @@ Wampirzec::SzukajPartnera (list < Wampirzec * >cale_stado)
     {
       unsigned char kierunek = getrandom (1, 9);
       if (PobierzPolozenieX () < najblizszy->PobierzPolozenieX ())
-	{
-	  if (PobierzPolozenieY () < najblizszy->PobierzPolozenieY ())
-	    {
-	      kierunek = 9;
-	    }
-	  else if (PobierzPolozenieY () == najblizszy->PobierzPolozenieY ())
-	    {
-	      kierunek = 6;
-	    }
-	  else
-	    {
-	      kierunek = 3;
-	    }
-	}
+        {
+          if (PobierzPolozenieY () < najblizszy->PobierzPolozenieY ())
+            {
+              kierunek = 9;
+            }
+          else if (PobierzPolozenieY () == najblizszy->PobierzPolozenieY ())
+            {
+              kierunek = 6;
+            }
+          else
+            {
+              kierunek = 3;
+            }
+        }
       else if (PobierzPolozenieX () == najblizszy->PobierzPolozenieX ())
-	{
-	  if (PobierzPolozenieY () < najblizszy->PobierzPolozenieY ())
-	    {
-	      kierunek = 8;
-	    }
-	  else
-	    {
-	      kierunek = 2;
-	    }
-	}
+        {
+          if (PobierzPolozenieY () < najblizszy->PobierzPolozenieY ())
+            {
+              kierunek = 8;
+            }
+          else
+            {
+              kierunek = 2;
+            }
+        }
       else
-	{
-	  if (PobierzPolozenieY () < najblizszy->PobierzPolozenieY ())
-	    {
-	      kierunek = 7;
-	    }
-	  else if (PobierzPolozenieY () == najblizszy->PobierzPolozenieY ())
-	    {
-	      kierunek = 4;
-	    }
-	  else
-	    {
-	      kierunek = 1;
-	    }
-	}
+        {
+          if (PobierzPolozenieY () < najblizszy->PobierzPolozenieY ())
+            {
+              kierunek = 7;
+            }
+          else if (PobierzPolozenieY () == najblizszy->PobierzPolozenieY ())
+            {
+              kierunek = 4;
+            }
+          else
+            {
+              kierunek = 1;
+            }
+        }
       Przesun (kierunek);
     }
 
@@ -240,21 +240,21 @@ Wampirzec::RozmnazajSie (Wampirzec * partner)
     {
       // dojdzie do mutacji kodu genetycznego?
       if (getrandom (0, 100) <
-	  prawdopodobienstwo_mutacji -
-	  (prawdopodobienstwo_mutacji_a_jurnosc * jurnosc))
-	{
-	  nowy = new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY ());
-	}
+          prawdopodobienstwo_mutacji -
+          (prawdopodobienstwo_mutacji_a_jurnosc * jurnosc))
+        {
+          nowy = new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY ());
+        }
       else
-	{			// nie, dziedzicza po jednym z rodzicow
-	  double j = getrandom (0, 1) ? jurnosc : partner->jurnosc;
-	  unsigned int z = getrandom (0, 1) ? zycie : partner->zycie;
-	  unsigned int o =
-	    getrandom (0, 1) ? odpoczynek : partner->odpoczynek;
-	  nowy =
-	    new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY (), j, z,
-			   o);
-	}
+        {                        // nie, dziedzicza po jednym z rodzicow
+          double j = getrandom (0, 1) ? jurnosc : partner->jurnosc;
+          unsigned int z = getrandom (0, 1) ? zycie : partner->zycie;
+          unsigned int o =
+            getrandom (0, 1) ? odpoczynek : partner->odpoczynek;
+          nowy =
+            new Wampirzec (PobierzPolozenieX (), PobierzPolozenieY (), j, z,
+                           o);
+        }
       ++ilosc_wampirzcow;
     }
 

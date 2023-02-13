@@ -83,20 +83,20 @@ Kolonia::ChwilaZycia (void)
   while (poczatek != koniec)
     {
       if ((*poczatek)->CzyMartwy ())
-	{
-	  stado.erase (poczatek++);
-	  continue;
-	}
+        {
+          stado.erase (poczatek++);
+          continue;
+        }
       if ((nowy = (*poczatek++)->ChwilaZycia (stado)))
-	{
-	  stado.push_back (nowy);
-	}
+        {
+          stado.push_back (nowy);
+        }
     }
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
   glOrtho (0.0, wielkosc_okna_x, 0,
-	   wielkosc_okna_y - ((wielkosc_okna_y / 50.0) + 5), -1.0, 1.0);
+           wielkosc_okna_y - ((wielkosc_okna_y / 50.0) + 5), -1.0, 1.0);
   glColor4f (0.7f, 0.6f, 0.5f, 0.4f);
   glEnable (GL_BLEND);
   glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

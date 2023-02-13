@@ -47,7 +47,7 @@ const unsigned int zycie_a_jurnosc = 5;
 const unsigned int odpoczynek_minimalny = 32;
 const double odpoczynek_a_jurnosc = 0.05;
 
-const unsigned int prawdopodobienstwo_mutacji = 20;	// w %
+const unsigned int prawdopodobienstwo_mutacji = 20;        // w %
 const double prawdopodobienstwo_mutacji_a_jurnosc = 0.5;
 
 const double szybkosc_a_jurnosc = 0.7;
@@ -71,17 +71,17 @@ main (int argc, char **argv)
   SDL_GL_SetAttribute (SDL_GL_BLUE_SIZE, 5);
   SDL_Surface *
     surface = SDL_SetVideoMode (wielkosc_okna_x,
-				wielkosc_okna_y,
-				16,
-				SDL_OPENGL | SDL_ANYFORMAT | SDL_DOUBLEBUF
-				| SDL_FULLSCREEN);
+                                wielkosc_okna_y,
+                                16,
+                                SDL_OPENGL | SDL_ANYFORMAT | SDL_DOUBLEBUF
+                                | SDL_FULLSCREEN);
   if(!surface)
     {
-	clog << "BUG: " << __FILE__ << ":" << __LINE__ <<                                                                                    
+        clog << "BUG: " << __FILE__ << ":" << __LINE__ <<
             " main() - SDL_SetVideoMode() nie utworzylo powierzchni!" << endl;
-	return 0;
+        return 0;
     }
-  
+
   SDL_WM_SetCaption (PACKAGE_STRING, PACKAGE_STRING);
 
   SDL_Event
@@ -99,35 +99,35 @@ main (int argc, char **argv)
     {
       startTime = SDL_GetTicks ();
       while (SDL_PollEvent (&event))
-	{
-	  switch (event.type)
-	    {
-	    case SDL_KEYDOWN:
-	      break;
-	    case SDL_KEYUP:
-	      switch (event.key.keysym.sym)
-		{
-		case SDLK_r:	// restart symulacji
-		  delete KoloniaWampirzcow;
-		  KoloniaWampirzcow = new Kolonia;
-		  break;
-		case SDLK_ESCAPE:	// koniec symulacji
-		case SDLK_q:
-		case SDLK_w:
-		  go_quit = true;
-		  break;
-		}
-	      break;
-	    case SDL_QUIT:
-	      go_quit = true;
-	      break;
-	    }
-	}
+        {
+          switch (event.type)
+            {
+            case SDL_KEYDOWN:
+              break;
+            case SDL_KEYUP:
+              switch (event.key.keysym.sym)
+                {
+                case SDLK_r:        // restart symulacji
+                  delete KoloniaWampirzcow;
+                  KoloniaWampirzcow = new Kolonia;
+                  break;
+                case SDLK_ESCAPE:        // koniec symulacji
+                case SDLK_q:
+                case SDLK_w:
+                  go_quit = true;
+                  break;
+                }
+              break;
+            case SDL_QUIT:
+              go_quit = true;
+              break;
+            }
+        }
       glMatrixMode (GL_PROJECTION);
       glLoadIdentity ();
       glOrtho (0.0, wielkosc_ekosystemu_x, 0,
-	       wielkosc_ekosystemu_y - ((wielkosc_ekosystemu_y / 50) + 5),
-	       -1.0, 1.0);
+               wielkosc_ekosystemu_y - ((wielkosc_ekosystemu_y / 50) + 5),
+               -1.0, 1.0);
       glClearColor (0.0, 0.0, 0.0, 0.0);
       glClear (GL_COLOR_BUFFER_BIT);
       KoloniaWampirzcow->ChwilaZycia ();
@@ -135,7 +135,7 @@ main (int argc, char **argv)
       SDL_GL_SwapBuffers ();
       endTime = SDL_GetTicks ();
       if (endTime - startTime < 5)
-	SDL_Delay (5 - (startTime - endTime));
+        SDL_Delay (5 - (startTime - endTime));
     }
 
   delete

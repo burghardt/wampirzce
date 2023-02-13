@@ -58,12 +58,12 @@ class Wampirzec:private Polozenie
 {
 public:
   Wampirzec (const double _x = getrandom (0, wielkosc_ekosystemu_x),
-	     const double _y = getrandom (0, wielkosc_ekosystemu_y),
-	     const double _jurnosc =
-	     getrandom (jurnosc_minimalna, jurnosc_maksymalna),
-	     const unsigned int _zycie =
-	     zycie_minimalne + getrandom (0, zycie_minimalne),
-	     const unsigned int _odpoczynek = odpoczynek_minimalny);
+             const double _y = getrandom (0, wielkosc_ekosystemu_y),
+             const double _jurnosc =
+             getrandom (jurnosc_minimalna, jurnosc_maksymalna),
+             const unsigned int _zycie =
+             zycie_minimalne + getrandom (0, zycie_minimalne),
+             const unsigned int _odpoczynek = odpoczynek_minimalny);
   Wampirzec *ChwilaZycia (const list < Wampirzec * >);
   bool CzyMartwy (void);
   void UstawIloscWampirzcow (const unsigned int);
