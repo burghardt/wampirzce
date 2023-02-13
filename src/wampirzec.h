@@ -2,7 +2,7 @@
    wampirzec.h - interfejs klasy wampirzec
 
    This file is part of Wampirzce.
-   Copyright (C) 2004 Krzysztof Burghardt.
+   Copyright (C) 2004, 2023 Krzysztof Burghardt.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,21 +25,20 @@
 #define __WAMPIRZEC_H__
 
 #include <list>
-#include <sys/time.h>
+#include <random>
 #include "polozenie.h"
 
 using namespace std;
 
-static inline int
-rnd (void)
+static int
+getrandom (int min = 0, int max = std::numeric_limits<int>::max())
 {
-  static struct timeval tv;
-  gettimeofday (&tv, 0);
-  srandom (tv.tv_sec * tv.tv_usec);
-  return random () % (RAND_MAX + 1);
-}
+  static std::random_device rd;
+  static std::mt19937 rgen(rd());
+  std::uniform_int_distribution<> unidistr(min, max);
 
-#define getrandom(min, max) ((rnd() % (int)(((max)+1) - (min))) + (min))
+  return unidistr(rgen);
+}
 
 extern const unsigned int wielkosc_ekosystemu_x;
 extern const unsigned int wielkosc_ekosystemu_y;
