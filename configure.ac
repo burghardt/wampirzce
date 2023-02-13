@@ -1,7 +1,7 @@
 AC_INIT([Symulacja Wampirzcow-Rozpustnikow],[1.0.2],[krzysztof@burghardt.pl],[wampirzce])
 AC_CONFIG_AUX_DIR(build)
 AC_CONFIG_SRCDIR(src/main.C)
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE
 
 # Checks for programs.
@@ -26,7 +26,7 @@ if test -x "`which sdl-config 2>/dev/null`"; then
 else
     AC_MSG_ERROR(SDL not found!)
 fi
-						    
+
 AC_CONFIG_FILES([Makefile
  src/Makefile
  ])
