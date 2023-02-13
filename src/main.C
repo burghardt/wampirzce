@@ -27,8 +27,6 @@
 
 using namespace std;
 
-static char *id = "$Id: main.C,v 1.17 2007-11-01 17:07:20 kb Exp $";
-
 unsigned int wielkosc_okna_x = 1024;
 unsigned int wielkosc_okna_y = 768;
 
@@ -61,7 +59,7 @@ Kolonia *
 int
 main (int argc, char **argv)
 {
-  cout << PACKAGE_STRING << endl << id << endl;
+  cout << PACKAGE_STRING << endl;
 
   SDL_Init (SDL_INIT_VIDEO | SDL_INIT_TIMER);
   glutInit (&argc, argv);
