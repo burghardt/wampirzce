@@ -113,6 +113,8 @@ main (int argc, char **argv)
                 case SDLK_w:
                   go_quit = true;
                   break;
+                default:
+                  break;
                 }
               break;
             case SDL_QUIT:
