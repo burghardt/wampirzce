@@ -40,7 +40,7 @@ public:
 
   void ChwilaZycia (void);
 private:
-    list < Wampirzec * >stado;
+  list < Wampirzec * >stado;
   unsigned long long int iteracji;
 };
 
