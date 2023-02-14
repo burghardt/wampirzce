@@ -113,12 +113,12 @@ Kolonia::ChwilaZycia (void)
 
   glTranslatef (100.f, 50.f, 0.f);
   glDrawText ("Wampirzcow: ");
-  sprintf (buffer, "%d", stado.size ());
+  sprintf (buffer, "%zu", stado.size ());
   glDrawText (buffer);
 
   glTranslatef (wielkosc_okna_x / 2 + 10, 0.f, 0.f);
   glDrawText ("Iteracji: ");
-  sprintf (buffer, "%d", iteracji);
+  sprintf (buffer, "%llu", iteracji);
   glDrawText (buffer);
 
   glTranslatef (wielkosc_okna_x * 3.0 / 4.0 + 10, 0.f, 0.f);
