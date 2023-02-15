@@ -22,20 +22,9 @@
 #define __WAMPIRZEC_H__
 
 #include <list>
-#include <random>
 #include "polozenie.h"
 
 using namespace std;
-
-static int
-getrandom (int min = 0, int max = std::numeric_limits<int>::max())
-{
-  static std::random_device rd;
-  static std::mt19937 rgen(rd());
-  std::uniform_int_distribution<> unidistr(min, max);
-
-  return unidistr(rgen);
-}
 
 extern const unsigned int wielkosc_ekosystemu_x;
 extern const unsigned int wielkosc_ekosystemu_y;
@@ -49,6 +38,8 @@ extern const double odpoczynek_a_jurnosc;
 extern const unsigned int prawdopodobienstwo_mutacji;
 extern const double prawdopodobienstwo_mutacji_a_jurnosc;
 extern const double szybkosc_a_jurnosc;
+
+extern int getrandom (int, int);
 
 class Wampirzec:private Polozenie
 {

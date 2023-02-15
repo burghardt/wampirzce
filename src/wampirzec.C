@@ -20,13 +20,24 @@
 
 #include <iostream>
 #include <cmath>
+#include <random>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include "wampirzec.h"
 
 using namespace std;
 
-inline void
+int
+getrandom (int min = 0, int max = std::numeric_limits<int>::max())
+{
+  static std::random_device rd;
+  static std::mt19937 rgen(rd());
+  std::uniform_int_distribution<> unidistr(min, max);
+
+  return unidistr(rgen);
+}
+
+static inline void
 glPutPixel (double x, double y, double z, double r, double g, double b)
 {
   glColor3f (r, g, b);
