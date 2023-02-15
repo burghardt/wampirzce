@@ -19,7 +19,14 @@ jobs:
           sudo apt install libsdl1.2-dev freeglut3-dev
       - name: autogen
         run: sh autogen.sh
-      - name: configure
+      - name: configure for gcc
         run: ./configure
-      - name: make
+      - name: make with gcc
+        run: make -j
+      - name: configure for clang
+        run: |
+          export CC=clang
+          export CXX=clang++
+          ./configure
+      - name: make with clang
         run: make -j
