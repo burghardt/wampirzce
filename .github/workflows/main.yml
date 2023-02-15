@@ -21,8 +21,12 @@ jobs:
         run: sh autogen.sh
       - name: configure for gcc
         run: ./configure
+      - name: clean
+        run: make clean
       - name: make with gcc
         run: make -j
+      - name: distclean
+        run: make distclean
       - name: configure for clang
         run: |
           export CC=clang
