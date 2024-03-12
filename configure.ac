@@ -28,6 +28,7 @@ else
 fi
 
 # Set additional CPPFLAGS and LDFLAGS.
+CPPFLAGS="$CPPFLAGS -DGL_SILENCE_DEPRECATION"
 CPPFLAGS="$CPPFLAGS -Wall -Werror -Wextra -Wdate-time"
 CPPFLAGS="$CPPFLAGS -Wformat -Wformat-security -D_FORTIFY_SOURCE=2"
 CPPFLAGS="$CPPFLAGS -Wcast-align -Wcast-qual -Wchar-subscripts"
